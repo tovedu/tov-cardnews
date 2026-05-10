@@ -1,0 +1,29 @@
+:root{
+  --bg:#FAF7F2;
+  --ink:#111111;
+  --sub:#555555;
+  --blue:#2F6BFF;
+  --red:#E60023;
+  --box:#FFFFFF;
+  --line:#E8DED2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,'Noto Sans KR',sans-serif;color:var(--ink)}
+.app{min-height:100vh;display:grid;grid-template-columns:420px 1fr;gap:28px;padding:28px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:0 16px 40px rgba(0,0,0,.06);height:calc(100vh - 56px);overflow:auto}
+.eyebrow{font-size:12px;font-weight:800;color:var(--blue);letter-spacing:.08em;margin:0 0 10px}
+h1{font-size:28px;margin:0 0 8px}.guide{margin:0 0 22px;color:var(--sub);line-height:1.6}.buttons{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}
+button{border:0;border-radius:14px;padding:13px 15px;background:var(--blue);color:white;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px}
+button:nth-child(3){background:#222}.ghost{background:#F1E8DD;color:#111;width:100%;margin-top:12px}.field{margin-bottom:14px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px;color:#777;text-transform:uppercase}
+textarea,select{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px;font-size:15px;line-height:1.45;background:#fff;color:#111;resize:vertical}
+.preview-wrap{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 56px)}
+.card{width:1080px;height:1080px;background:var(--bg);border-radius:0;position:relative;overflow:hidden;padding:58px;transform:scale(.58);transform-origin:center;box-shadow:0 24px 70px rgba(0,0,0,.12)}
+.topbar{height:54px;display:flex;align-items:center;justify-content:space-between;font-size:27px;font-weight:900}.topbar span{background:#fff;border:2px solid var(--line);border-radius:999px;padding:12px 24px;color:var(--blue)}.topbar strong{letter-spacing:.08em}
+.photo-box{height:430px;margin-top:34px;border-radius:42px;overflow:hidden;background:#fff;border:3px solid #fff;box-shadow:0 18px 40px rgba(0,0,0,.08)}.photo-box img{width:100%;height:100%;object-fit:cover}.placeholder{height:100%;display:flex;align-items:center;justify-content:center;color:#999;font-size:34px;font-weight:800;text-align:center;padding:40px;background:#F1E8DD}
+.copy-box{margin-top:42px}.keyword{display:inline-block;margin:0 0 20px;background:var(--blue);color:white;font-size:30px;font-weight:900;border-radius:18px;padding:14px 22px}h2{font-size:72px;line-height:1.18;letter-spacing:-.05em;margin:0 0 22px;white-space:pre-line}.subtitle{font-size:32px;line-height:1.45;color:var(--sub);margin:0 0 22px;font-weight:700}.body-text{font-size:34px;line-height:1.55;margin:0;white-space:pre-line;background:#fff;border-left:12px solid var(--blue);border-radius:24px;padding:24px 28px;font-weight:700;color:#222}.footer{position:absolute;left:58px;right:58px;bottom:44px;border-top:2px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:24px;color:#555}.footer b{color:#111}
+@media(max-width:1000px){.app{grid-template-columns:1fr;padding:16px}.panel{height:auto}.preview-wrap{min-height:auto;overflow:auto}.card{transform:scale(.32);margin:-330px 0}}
+.html-preview{width:min(980px,100%);height:calc(100vh - 56px);display:grid;grid-template-rows:auto 1fr 260px;gap:14px}
+.html-actions{display:flex;gap:10px;justify-content:flex-end}.html-actions button{width:auto;background:#111}.html-actions button:first-child{background:var(--blue)}
+.html-preview iframe{width:100%;height:100%;border:1px solid var(--line);border-radius:24px;background:white;box-shadow:0 16px 40px rgba(0,0,0,.06)}
+.code-box{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:12px;line-height:1.45;white-space:pre;border-radius:18px;background:#111;color:#f6f6f6;border:0;resize:none}
+@media(max-width:1000px){.html-preview{height:auto;grid-template-rows:auto 420px 260px}.html-actions{justify-content:stretch}.html-actions button{flex:1}}
