@@ -1,13 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>토브에듀 카드뉴스 메이커</title>
-    <meta name="description" content="토브에듀 카드뉴스와 블로그 썸네일을 빠르게 만드는 도구" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>토브에듀 카드뉴스 업로드</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="panel intro">
+      <p class="eyebrow">TOV EDU CARD NEWS MAKER</p>
+      <h1>토브에듀 카드뉴스 이미지 업로드</h1>
+      <p class="desc">이미지를 붙여넣거나 업로드하면 Supabase Storage에 저장되고, 블로그/홈페이지에 붙일 수 있는 HTML 코드가 생성됩니다.</p>
+    </section>
+
+    <section class="grid">
+      <section class="panel controls">
+        <h2>1. 이미지 업로드</h2>
+        <label class="drop-zone" id="dropZone">
+          <input type="file" id="fileInput" accept="image/*" />
+          <span>이미지를 선택하거나<br />Ctrl + V로 붙여넣으세요</span>
+        </label>
+        <button id="uploadBtn" class="primary">Supabase에 저장하기</button>
+        <p id="status" class="status">아직 업로드 전입니다.</p>
+
+        <h2>2. 카드 문구</h2>
+        <label>상단 라벨
+          <input id="labelInput" value="TOV EDU" />
+        </label>
+        <label>제목
+          <textarea id="titleInput" rows="2">왜냐하면으로 이해하고, 그래서로 설명하는 힘</textarea>
+        </label>
+        <label>본문
+          <textarea id="bodyInput" rows="3">토브에듀는 아이가 문제를 푸는 데서 멈추지 않고, 자기 생각을 설명하도록 돕습니다.</textarea>
+        </label>
+        <label>하단 문구
+          <input id="footerInput" value="개포동 초등 국어·영어·수학 | 토브에듀" />
+        </label>
+
+        <h2>3. 이미지 위치</h2>
+        <label>가로 위치
+          <select id="xPos">
+            <option value="center">가운데</option>
+            <option value="left">왼쪽</option>
+            <option value="right">오른쪽</option>
+          </select>
+        </label>
+        <label>세로 위치
+          <select id="yPos">
+            <option value="center">가운데</option>
+            <option value="top">위</option>
+            <option value="bottom">아래</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="panel preview-panel">
+        <h2>미리보기</h2>
+        <article class="card" id="cardPreview">
+          <div class="photo-wrap">
+            <img id="previewImage" alt="토브에듀 카드뉴스 이미지 미리보기" />
+            <div class="empty" id="emptyState">이미지를 업로드하면 여기에 표시됩니다.</div>
+          </div>
+          <div class="card-copy">
+            <p class="card-label" id="cardLabel">TOV EDU</p>
+            <h3 id="cardTitle">왜냐하면으로 이해하고, 그래서로 설명하는 힘</h3>
+            <p id="cardBody">토브에듀는 아이가 문제를 푸는 데서 멈추지 않고, 자기 생각을 설명하도록 돕습니다.</p>
+            <p class="card-footer" id="cardFooter">개포동 초등 국어·영어·수학 | 토브에듀</p>
+          </div>
+        </article>
+
+        <div class="actions">
+          <button id="copyUrlBtn">이미지 URL 복사</button>
+          <button id="copyHtmlBtn">HTML 코드 복사</button>
+          <button id="downloadHtmlBtn">HTML 파일 저장</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="panel html-panel">
+      <h2>생성된 HTML 코드</h2>
+      <textarea id="htmlOutput" rows="12" readonly></textarea>
+    </section>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
 </html>
