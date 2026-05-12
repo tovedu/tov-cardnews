@@ -10,7 +10,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 */
 const SUPABASE_URL = 'https://chteygulcweyekcumnpo.supabase.co/rest/v1/';
 const SUPABASE_ANON_KEY = 'sb_publishable__raD5sfaXnIXFv-cgPM68A_64PIM_LM';
-const BUCKET_NAME = 'tov-cardnews';
+const BUCKET_NAME = 'cardnews';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
