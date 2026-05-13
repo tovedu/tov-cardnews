@@ -8,7 +8,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
   4. Public bucket 체크
   5. 아래 SUPABASE_URL / SUPABASE_ANON_KEY 입력
 */
-const SUPABASE_URL = 'https://chteygulcweyekcumnpo.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://chteygulcweyekcumnpo.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable__raD5sfaXnIXFv-cgPM68A_64PIM_LM';
 const BUCKET_NAME = 'cardnews';
 
