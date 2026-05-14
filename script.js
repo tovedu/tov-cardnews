@@ -123,13 +123,14 @@ async function uploadToSupabase() {
   uploadBtn.disabled = true;
   uploadBtn.textContent = '업로드 중...';
   statusEl.textContent = 'Supabase Storage에 업로드하고 있습니다.';
-
+  
+  const optimizedFile = await convertToWebP(selectedFile);
+  
   const ext = selectedFile.type.split('/')[1] || 'png';
-  const fileName = `cardnews/${new Date().toISOString().slice(0,10)}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-
+  const fileName =`cardnews/${new Date().toISOString().slice(0,10)}/${Date.now()}-${Math.random().toString(36).slice(2)}.webp`;
   const { error } = await supabase.storage
     .from(BUCKET_NAME)
-    .upload(fileName, selectedFile, {
+    .upload(fileName, optimizedFile {
       cacheControl: '3600',
       upsert: false,
       contentType: selectedFile.type,
@@ -199,3 +200,42 @@ downloadHtmlBtn.addEventListener('click', () => {
 });
 
 updatePreviewText();
+async function convertToWebP(file, maxWidth = 1600, quality = 0.82) {
+  return new Promise((resolve) => {
+    const img = new Image();
+
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxWidth) {
+        height *= maxWidth / width;
+        width = maxWidth;
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+
+      canvas.toBlob(
+        (blob) => {
+          const webpFile = new File(
+            [blob],
+            `card-${Date.now()}.webp`,
+            { type: 'image/webp' }
+          );
+
+          resolve(webpFile);
+        },
+        'image/webp',
+        quality
+      );
+    };
+
+    img.src = URL.createObjectURL(file);
+  });
+}
