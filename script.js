@@ -130,7 +130,7 @@ async function uploadToSupabase() {
   const fileName =`cardnews/${new Date().toISOString().slice(0,10)}/${Date.now()}-${Math.random().toString(36).slice(2)}.webp`;
   const { error } = await supabase.storage
     .from(BUCKET_NAME)
-    .upload(fileName, optimizedFile {
+    .upload(fileName, optimizedFile, {
       cacheControl: '3600',
       upsert: false,
       contentType: selectedFile.type,
